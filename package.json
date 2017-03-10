@@ -1,0 +1,33 @@
+{
+  "name": "company-goods",
+  "version": "1.0.0",
+  "description": "angularsjs spa",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucypoly/company-Goods.git"
+  },
+  "keywords": [
+    "angularjs",
+    "bootstrap"
+  ],
+  "author": "lucy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucypoly/company-Goods/issues"
+  },
+  "homepage": "https://github.com/lucypoly/company-Goods#readme",
+  "devDependencies": {
+    "angular": "^1.6.3",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "jquery": "^3.1.1"
+  },
+  "dependencies": {
+    "angular-ui-router": "^0.4.2"
+  }
+}
