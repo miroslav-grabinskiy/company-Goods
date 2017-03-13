@@ -7,27 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="lib/angular-xeditable-0.6.0/css/xeditable.css" rel="stylesheet">
 </head>
 <body>
 <body id="myPage" ng-app="myApp" ng-controller="customersCtrl">
 
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#myPage">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#myPage">HOME</a></li>
-                <li><a href="#band">COMPANIES</a></li>
-                <li><a href="#tour">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#myPage">Logo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">COMPANIES</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -40,41 +44,42 @@
     <img src="img/ajax_loader_gray_64.gif" class="ajax-loader">
 </div>
 
-<div id="companies" class="container-fluid">
-    <div class="col-sm-4 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Filter by name</h3>
+<div class="container">
+    <div id="companies" class="container-fluid">
+        <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Filter by name</h3>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" name="nameFilter" placeholder="Name of company"
+                           ng-model="search.companyName">
+                </div>
             </div>
-            <div class="panel-body">
-                <input type="text" class="form-control" name="nameFilter" placeholder="Name of company">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Filter by products</h3>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" name="productsFilter" placeholder="Products of company"
+                           ng-model="search.companyGoods">
+                </div>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Filter by products</h3>
-            </div>
-            <div class="panel-body">
-                <input type="text" class="form-control" name="productsFilter" placeholder="Products of company">
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-8">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Companies</h3>
-            </div>
-            <div class="panel-body">
-                <div class="panel panel-default"  ng-repeat="company in myData">
-                    <div class="panel-body">
-                        {{ company.companyName}}
-                        <ul>
-                            <li ng-repeat="good in company.companyGoods">
-                                {{good}}
-                            </li>
-
-                        </ul>
-                        <button ng-click="delete(company, $index)" class="btn btn-danger btn-xs pull-right remove">x</button>
+        <div class="col-xs-12 col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Companies</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-default"
+                         ng-repeat="company in myData.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))  | filter:search">
+                        <div class="panel-body">
+                            {{ company.companyName}}<br>
+                            Goods: {{company.companyGoods}}
+                            <button ng-click="delete(company, $index)" class="btn btn-danger btn-xs pull-right remove">x
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,6 +95,9 @@
 <script src="js/myApp.js"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<script src="node_modules/angular-bootstrap-npm/dist/angular-bootstrap.js"></script>
+<script src="lib/angular-xeditable-0.6.0/js/xeditable.js"></script>
+
 
 </body>
 </html>

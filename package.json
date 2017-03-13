@@ -22,6 +22,7 @@
   "homepage": "https://github.com/lucypoly/company-Goods#readme",
   "devDependencies": {
     "angular": "^1.6.3",
+    "angular-bootstrap-npm": "^0.14.3",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.1",
